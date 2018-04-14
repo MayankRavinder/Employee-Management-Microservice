@@ -26,8 +26,6 @@ import com.nc.spring.boot.mongo.model.Employee;
 import com.nc.spring.boot.mongo.model.EmployeeModifiedResponse;
 import com.nc.spring.boot.mongo.model.EmployeeRequest;
 import com.nc.spring.boot.mongo.model.EmployeeResponse;
-import com.nc.spring.boot.mongo.repositories.EmployeeRepositoryExtended;
-import com.nc.spring.boot.mongo.service.EmployeeService;
 import com.nc.spring.boot.mongo.service.EmployeeServiceImpl;
 
 import io.swagger.annotations.Api;
@@ -44,7 +42,7 @@ public class EmployeController {
 
 	@Autowired
 	EmployeeServiceImpl empService;
-	
+
 	@InitBinder
 	public void dataBinding(final WebDataBinder binder, final HttpServletRequest request) {
 		System.out.println("InitBinder Method Called for :" + request.getRequestURI());
@@ -127,7 +125,7 @@ public class EmployeController {
 	@RequestMapping(value = "/getEmployeeById/{employeeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getEmployeeById(
 			@ApiParam(value = "Employee Id From User") @PathVariable("employeeId") String employeeId) {
-		   return empService.findById(employeeId);
+		return empService.findById(employeeId);
 	}
 
 	@ApiOperation(value = "Find All ID's Greater Than", notes = "Desc: Send Employee JSON object with valid ID and api returns all the employee having ID greater than specified", hidden = false)
@@ -215,7 +213,7 @@ public class EmployeController {
 		System.out.println("Getting non-null fields only uing JSON_INCLUDE(NONNULL)");
 		Employee e = new Employee();
 		e.setId(new Integer(786).toString());
-		Address address=new Address();
+		Address address = new Address();
 		address.setCountry("INDIA");
 		e.setAddress(address);
 		// Converting response to modifying response
@@ -224,11 +222,11 @@ public class EmployeController {
 		return employeeModifiedResponse;
 
 	}
-	
-	@ApiOperation(value="This Api is used to fetch empl")
-	@RequestMapping(value="/getEmployeeByIdUsingQueryParam",params="id",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+
+	@ApiOperation(value = "This api is used to fetch empl")
+	@RequestMapping(value = "/getEmployeeByIdUsingQueryParam", params = "id", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Employee getEmployeeByIdUsingQueryParam(@RequestParam("id") String employeeId) {
-		System.out.println("Id is :"+employeeId);
+		System.out.println("Id is :" + employeeId);
 		return empService.check(employeeId);
 	}
 }
