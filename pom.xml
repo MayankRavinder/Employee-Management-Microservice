@@ -49,7 +49,7 @@
 			<artifactId>spring-cloud-starter-zuul</artifactId>
 			<version>1.3.0.RELEASE</version>
 		</dependency>
-		
+	<!-- 	Commenting Dev Tools Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

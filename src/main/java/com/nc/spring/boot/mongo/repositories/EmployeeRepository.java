@@ -25,7 +25,7 @@ public interface EmployeeRepository extends MongoRepository < Employee, String >
 	List<Employee> findTop3ByOrderByName();
 	List<Employee> findDistinctByName(String name);
 	
-	 @Query( fields = "{'name':0 }") //Limiting response fields
+	 //@Query( fields = "{'name':0 }") //Limiting response fields //If we write , then name would not be show in response.
      Employee findNameById(String id);
 	
 

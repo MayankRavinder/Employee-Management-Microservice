@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nc.spring.boot.mongo.adapter.EmployeeAdapter;
@@ -25,14 +26,16 @@ import com.nc.spring.boot.mongo.model.Employee;
 import com.nc.spring.boot.mongo.model.EmployeeModifiedResponse;
 import com.nc.spring.boot.mongo.model.EmployeeRequest;
 import com.nc.spring.boot.mongo.model.EmployeeResponse;
+import com.nc.spring.boot.mongo.repositories.EmployeeRepositoryExtended;
 import com.nc.spring.boot.mongo.service.EmployeeService;
+import com.nc.spring.boot.mongo.service.EmployeeServiceImpl;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/SpringBootMongoDbCRUD/student")
+@RequestMapping("/employee-management")
 @Api(value = "Employee Controller", description = "This api(Employee Controller will provide basic operation of employee")
 public class EmployeController {
 
@@ -40,8 +43,8 @@ public class EmployeController {
 	private ApplicationContext appContext;
 
 	@Autowired
-	EmployeeService empService;
-
+	EmployeeServiceImpl empService;
+	
 	@InitBinder
 	public void dataBinding(final WebDataBinder binder, final HttpServletRequest request) {
 		System.out.println("InitBinder Method Called for :" + request.getRequestURI());
@@ -122,12 +125,9 @@ public class EmployeController {
 
 	@ApiOperation(value = "Get Employee By Id", hidden = false, notes = "Requires valid ID as input and return Employee object", response = Employee.class)
 	@RequestMapping(value = "/getEmployeeById/{employeeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Employee getEmployeeById(
+	public List<Employee> getEmployeeById(
 			@ApiParam(value = "Employee Id From User") @PathVariable("employeeId") String employeeId) {
-		Employee e = new Employee();
-		e.setId(employeeId);
-		e.setName("Kumar has employee Id" + employeeId);
-		return e;
+		   return empService.findById(employeeId);
 	}
 
 	@ApiOperation(value = "Find All ID's Greater Than", notes = "Desc: Send Employee JSON object with valid ID and api returns all the employee having ID greater than specified", hidden = false)
@@ -224,5 +224,11 @@ public class EmployeController {
 		return employeeModifiedResponse;
 
 	}
-
+	
+	@ApiOperation(value="This Api is used to fetch empl")
+	@RequestMapping(value="/getEmployeeByIdUsingQueryParam",params="id",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Employee getEmployeeByIdUsingQueryParam(@RequestParam("id") String employeeId) {
+		System.out.println("Id is :"+employeeId);
+		return empService.check(employeeId);
+	}
 }
