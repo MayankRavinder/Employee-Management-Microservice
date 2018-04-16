@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -16,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 @SpringBootApplication(scanBasePackages = { "com.nc.spring.boot.mongo.controller", "com.nc.spring.boot.mongo.model",
 		"com.nc.spring.boot.mongo.repositories", "com.nc.spring.boot.mongo.service",
@@ -38,7 +36,8 @@ public class SpringBootMongoCRUDMain {
 	public static void convertEntityToEntity(Employee employee) {
 		if (Objects.nonNull(employee)) {
 			ObjectMapper objectMapper = new ObjectMapper();
-			 objectMapper.setSerializationInclusion(Include.NON_EMPTY); //If any field value in employee is null then it would not put in MAP.
+			objectMapper.setSerializationInclusion(Include.NON_EMPTY); // If any field value in employee is null then it
+																		// would not put in MAP.
 			EntityReference entityReference = new EntityReference();
 			entityReference = objectMapper.convertValue(employee, EntityReference.class);
 			System.out.println("Entity Reference After Conversion:" + entityReference);
@@ -67,12 +66,14 @@ class Employee {
 class EntityReference {
 
 	public Map<String, Object> map;
+
 	public EntityReference() {
-		 map= new HashMap<>();
+		map = new HashMap<>();
 	}
+
 	@JsonAnySetter
-    public void setAny(final String key, final Object value) {
+	public void setAny(final String key, final Object value) {
 		map.put(key, value);
-    }
+	}
 
 }
