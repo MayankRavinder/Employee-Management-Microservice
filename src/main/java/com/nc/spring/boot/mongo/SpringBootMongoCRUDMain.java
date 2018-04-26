@@ -15,19 +15,19 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.Data;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = { "com.nc.spring.boot.mongo.controller", "com.nc.spring.boot.mongo.model",
 		"com.nc.spring.boot.mongo.repositories", "com.nc.spring.boot.mongo.service",
 		"com.nc.spring.boot.mongo.SwaggerDocument" })
 @EnableCaching
 @EnableAsync
-@EnableZuulProxy
-
+@EnableSwagger2
 public class SpringBootMongoCRUDMain {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SpringBootMongoCRUDMain.class, args);
-		System.out.println("Welcome to spring Boot application Running on PORT: 7777");
+		System.out.println("Welcome to spring Boot application Running on PORT: 8080");
 		// Entity Map Converion Example
 		Employee e = new Employee(1, "Mayank", null, 786.6d);
 		convertEntityToEntity(e);

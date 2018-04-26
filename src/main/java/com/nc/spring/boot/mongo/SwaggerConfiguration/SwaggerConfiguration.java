@@ -12,7 +12,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration("employeeManagementSwaggerConfiguration")
+@Configuration("employeeManagementMicroservice")
 @EnableSwagger2
 public class SwaggerConfiguration {
 
@@ -20,7 +20,7 @@ public class SwaggerConfiguration {
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.nc.spring.boot.mongo.controller"))
-				.paths((regex("/SpringBootMongoDbCRUD/student.*"))).build()
+				.paths((regex("/employee-management/api.*"))).build().groupName("Employee Management").useDefaultResponseMessages(false)
 				.apiInfo(metaData());
 	}
 

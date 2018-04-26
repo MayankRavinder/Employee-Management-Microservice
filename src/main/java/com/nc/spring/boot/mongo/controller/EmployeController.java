@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/employee-management")
+@RequestMapping("/employee-management/api")
 @Api(value = "Employee Controller", description = "This api(Employee Controller will provide basic operation of employee")
 public class EmployeController {
 
@@ -53,7 +53,7 @@ public class EmployeController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> welcomePage(HttpServletRequest request) {
 		Map<String, Object> resquestDetails = new HashMap<>();
-		resquestDetails.put("Title", "<br>Welcome to Spring Boot Mongo Application Running on port:7777</br>");
+		resquestDetails.put("Title", "<br>Welcome to Spring Boot Mongo Application Running on port:8080</br>");
 		return resquestDetails;
 	}
 
@@ -225,8 +225,11 @@ public class EmployeController {
 
 	@ApiOperation(value = "This api is used to fetch empl")
 	@RequestMapping(value = "/getEmployeeByIdUsingQueryParam", params = "id", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Employee getEmployeeByIdUsingQueryParam(@RequestParam("id") String employeeId) {
+	public Employee getEmployeeByIdUsingQueryParam(@RequestParam(value="id") String employeeId) {
 		System.out.println("Id is :" + employeeId);
 		return empService.check(employeeId);
 	}
+	
+	//Check Object to Entity Conversion
+	
 }
