@@ -20,8 +20,8 @@ public class SwaggerConfiguration {
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.nc.spring.boot.mongo.controller"))
-				.paths((regex("/employee-management/api.*"))).build().groupName("Employee Management").useDefaultResponseMessages(false)
-				.apiInfo(metaData());
+				.paths((regex("/employee-management/api.*"))).build().groupName("Employee Management")
+				.useDefaultResponseMessages(false).apiInfo(metaData());
 	}
 
 	private ApiInfo metaData() {
