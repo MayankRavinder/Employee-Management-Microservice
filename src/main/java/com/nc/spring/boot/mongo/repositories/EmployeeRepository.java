@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nc.spring.boot.mongo.model.Employee;
 
+
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee, UUID>, EmployeeRepositoryExtended {
 	List<Employee> findById(UUID id);
