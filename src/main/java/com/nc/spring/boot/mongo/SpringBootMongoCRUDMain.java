@@ -27,7 +27,7 @@ public class SpringBootMongoCRUDMain {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SpringBootMongoCRUDMain.class, args);
 		System.out.println("Welcome to spring Boot application Running on PORT: 8080");
-		// Entity Map Converion Example
+		// Entity Map Conversion Example
 		Employee e = new Employee(1, "Mayank", null, 786.6d);
 		convertEntityToEntity(e);
 	}
