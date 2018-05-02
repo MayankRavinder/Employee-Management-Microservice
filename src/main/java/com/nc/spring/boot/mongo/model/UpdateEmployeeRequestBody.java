@@ -21,7 +21,6 @@ public class UpdateEmployeeRequestBody extends EmployeeRequestBody {
 		super.setName(name);
 		updates.put("name", employee -> employee.setName(name));
 		System.out.println("update.getName() : " + updates.size());
-
 	}
 
 	@Override

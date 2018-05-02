@@ -1,5 +1,4 @@
 package com.nc.spring.boot.mongo.adapter;
-
 import org.springframework.stereotype.Component;
 
 import com.nc.spring.boot.mongo.mapper.EmployeeMapper;
