@@ -42,7 +42,6 @@ public class SpringBootMongoCRUDMain {
 			System.out.println("Entity Reference After Conversion:" + entityReference);
 		}
 	}
-
 };
 
 class Employee {
