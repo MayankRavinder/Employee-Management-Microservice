@@ -6,20 +6,19 @@ import java.util.Objects;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.Data;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = { "com.nc.spring.boot.mongo.controller", "com.nc.spring.boot.mongo.model",
 		"com.nc.spring.boot.mongo.repositories", "com.nc.spring.boot.mongo.service",
-		"com.nc.spring.boot.mongo.SwaggerDocument" })
-@EnableCaching
+		"com.nc.spring.boot.mongo.SwaggerDocument",
+		 "com.nc.spring.boot.mongo.common"})
+//@EnableCaching
 @EnableAsync
 @EnableSwagger2
 public class SpringBootMongoCRUDMain {
@@ -60,7 +59,7 @@ class Employee {
 	}
 }
 
-@Data
+//@Data
 class EntityReference {
 
 	public Map<String, Object> map;

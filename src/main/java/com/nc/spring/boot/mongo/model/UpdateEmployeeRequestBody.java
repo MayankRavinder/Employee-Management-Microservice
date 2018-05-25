@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @Getter
 public class UpdateEmployeeRequestBody extends EmployeeRequestBody {
-
+	
 	private final Map<String, Consumer<Employee>> updates;
 
 	public UpdateEmployeeRequestBody() {

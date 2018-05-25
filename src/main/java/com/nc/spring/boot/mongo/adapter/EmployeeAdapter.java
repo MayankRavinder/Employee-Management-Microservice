@@ -4,14 +4,14 @@ import org.springframework.stereotype.Component;
 import com.nc.spring.boot.mongo.mapper.EmployeeMapper;
 import com.nc.spring.boot.mongo.model.Employee;
 import com.nc.spring.boot.mongo.model.EmployeeRequestBody;
-import com.nc.spring.boot.mongo.model.EmployeeResponse;
+import com.nc.spring.boot.mongo.model.EmployeeResponseBody;
 
 @Component
 public class EmployeeAdapter {
 
-	private static final EmployeeMapper mapper = EmployeeMapper.INSTANCE;
+	public static final EmployeeMapper mapper = EmployeeMapper.INSTANCE;
 
-	public static EmployeeResponse convert(Employee e) {
+	public static EmployeeResponseBody convert(Employee e) {
 		return mapper.map(e);
 	}
 

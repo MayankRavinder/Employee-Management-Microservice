@@ -8,13 +8,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
+
 @Data
 @JsonInclude(NON_NULL)
-public class EmployeeResponse {
+public class EmployeeResponseBody {
 	private UUID id;
 	private String mobile;
 	private String name;
 	private Address address;
-
+	
 }
-

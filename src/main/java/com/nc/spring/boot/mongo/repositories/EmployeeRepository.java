@@ -11,15 +11,16 @@ import com.nc.spring.boot.mongo.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee, UUID>, EmployeeRepositoryExtended {
-	List<Employee> findById(UUID id);
+	
+	Employee findById(UUID id);
 
 	List<Employee> findByName(String name);
 
-	List<Employee> findByIdGreaterThan(String id);
+	List<Employee> findByIdGreaterThan(UUID id);
 
-	List<Employee> findByIdLessThan(String id);
+	List<Employee> findByIdLessThan(UUID id);
 
-	List<Employee> findByIdBetween(String from, String to);
+	List<Employee> findByIdBetween(UUID from, UUID to);
 
 	List<Employee> findByOrderByIdAsc();
 
@@ -37,6 +38,6 @@ public interface EmployeeRepository extends MongoRepository<Employee, UUID>, Emp
 
 	// @Query( fields = "{'name':0 }") //Limiting response fields //If we write ,
 	// then name would not be show in response.
-	Employee findNameById(String id);
+	Employee findNameById(UUID id);
 
 }

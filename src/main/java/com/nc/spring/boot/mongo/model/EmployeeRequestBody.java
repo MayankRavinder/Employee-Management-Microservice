@@ -12,10 +12,4 @@ public class EmployeeRequestBody {
 	private String mobile;
 	private Address address;
 
-	
-	@Override
-	public String toString() {
-		return "EmployeeRequestBody [id=" + id + ", name=" + name + ", mobile=" + mobile + ", address=" + address + "]";
-	}
-
 }
